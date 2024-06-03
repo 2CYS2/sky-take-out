@@ -3,4 +3,14 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.EmployeeMapper">
 
+    <!--员工分页查询【其中的limit参数是通过ThreasLocal自动拼接】-->
+    <select id="pageQuery" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name != null and name != ''">
+                and name like concat("%",#{name}, "%")
+            </if>
+        </where>
+        order by create_time desc
+    </select>
 </mapper>
