@@ -1,5 +1,6 @@
 package com.sky.vo;
 
+import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
@@ -25,7 +26,7 @@ public class EmployeeLoginVO implements Serializable {
     @ApiModelProperty("姓名")
     private String name;
 
-    @ApiModelProperty("jwt令牌")
+    @ApiModelProperty("JWT令牌")
     private String token;
 
 }
