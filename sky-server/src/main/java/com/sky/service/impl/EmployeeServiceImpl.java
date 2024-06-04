@@ -97,8 +97,8 @@ public class EmployeeServiceImpl implements EmployeeService {
         // 设置密码，默认为123456【默认使用MD5进行编码
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
 
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
         // TODO 后期需要改为当前登录用户的ID
         // 使用HttpServiceRequest获取token，再从token中获取ID值
 //        String token = httpServletRequest.getHeader("token");
@@ -106,10 +106,9 @@ public class EmployeeServiceImpl implements EmployeeService {
 //        Long empId = Long.valueOf(claims.get(JwtClaimsConstant.EMP_ID).toString());
 
         // 获取共享存储ThreadLocal中的ID值
-        Long empId = BaseContext.getCurrentId();
-
-        employee.setCreateUser(empId);
-        employee.setUpdateUser(empId);
+//        Long empId = BaseContext.getCurrentId();
+//        employee.setCreateUser(empId);
+//        employee.setUpdateUser(empId);
 
         employeeMapper.insert(employee);
     }
@@ -167,8 +166,8 @@ public class EmployeeServiceImpl implements EmployeeService {
     public void update(EmployeeDTO employeeDTO) {
         Employee employee = new Employee();
         BeanUtils.copyProperties(employeeDTO, employee);
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(BaseContext.getCurrentId());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(BaseContext.getCurrentId());
 
         employeeMapper.update(employee);
     }
