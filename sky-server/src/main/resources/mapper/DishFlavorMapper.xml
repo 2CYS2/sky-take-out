@@ -10,4 +10,12 @@
             </foreach>
     </insert>
 
+    <!--根据菜品id集合批量删除关联的口味数据-->
+    <delete id="deleteByDishIds">
+        delete from dish_flavor where dish_id in
+            <foreach collection="dishIds" item="dishId" open="(" separator="," close=")">
+                #{dishId}
+            </foreach>
+    </delete>
+
 </mapper>
