@@ -40,4 +40,10 @@ public interface ShoppingCartMapper {
      */
     @Delete("delete from shopping_cart where user_id = #{currentId}")
     void deleteByUserId(Long currentId);
+
+    /**
+     * 数量等于1，则删除该菜品/套餐
+     * @param cart
+     */
+    void deleteById(ShoppingCart cart);
 };
