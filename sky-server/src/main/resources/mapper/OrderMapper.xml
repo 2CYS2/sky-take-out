@@ -25,7 +25,7 @@
                 and phone like concat('%', #{phone}, '%')
             </if>
             <if test="userId != null">
-                and user_id = #{usetId}
+                and user_id = #{userId}
             </if>
             <if test="status != null">
                 and status = #{status}
@@ -37,7 +37,7 @@
                 and order_time = #{endTime}
             </if>
         </where>
-        order by order_tiem desc
+        order by order_time desc
     </select>
 
     <!--更新订单状态-->
@@ -59,4 +59,19 @@
             </set>
         where user_id = #{userId}
     </update>
+
+    <select id="sumByMap" resultType="java.lang.Double">
+        select sum(amount) from orders
+        <where>
+            <if test="status != null">
+                and status = #{status}
+            </if>
+            <if test="begin != null">
+                and order_time &lt;= #{begin}
+            </if>
+            <if test="end != null">
+                and order_time &lt;= #{end}
+            </if>
+        </where>
+    </select>
 </mapper>

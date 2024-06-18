@@ -13,6 +13,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.websocket.server.PathParam;
+
 @RestController("userOrderController")
 @RequestMapping("/user/order")
 @Api(tags = "用户端订单相关接口")
@@ -82,6 +84,18 @@ public class OrderController {
     @ApiOperation("再来一单")
     public Result repatition(@PathVariable Long id){
         orderService.repetition(id);
+        return Result.success();
+    }
+
+    /**
+     * 客户催单
+     * @param id
+     * @return
+     */
+    @GetMapping("reminder/{id}")
+    @ApiOperation("客户催单")
+    public Result reminder(@PathVariable Long id){
+        orderService.reminder(id);
         return Result.success();
     }
 }
