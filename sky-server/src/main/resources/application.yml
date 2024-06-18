@@ -46,6 +46,8 @@ sky:
   wechat:
     appid: ${sky.wechat.appid}
     secret: ${sky.wechat.secret}
+  shop:
+    address: 华南师范大学南海校区
 
 web:
   resources:
